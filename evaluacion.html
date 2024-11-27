@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación - Presente Continuo y Auxiliar Do/Does</title>
+  <link rel="icon" href="logoemp.jfif" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #528fe0;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    /* Sección de contenido */
+    .content {
+      background-color: #202124;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .content p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .options label {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Botones */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #528fe0;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #416ac2;
+    }
+
+    button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Botón de regreso */
+    .back-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #528fe0;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #416ac2;
+    }
+
+    /* Estilos para los resultados */
+    .result {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 20px;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <a href="#" class="logo">Ingles Now</a>
+  <header>
+    <h1>Evaluación: Presente Continuo y Auxiliar Do/Does</h1>
+  </header>
+
+  <!-- Contenido de Evaluación -->
+  <section class="content">
+    <h2>¡Pon a prueba tus conocimientos!</h2>
+    <form id="quizForm">
+
+      <!-- Pregunta 1: Presente Continuo -->
+      <div class="question">
+        <h3>1. ¿Cómo se forma el presente continuo en inglés?</h3>
+        <div class="options">
+          <label><input type="radio" name="question1" value="a"> a) Sujeto + verbo "to be" (am/are/is) + verbo en gerundio</label>
+          <label><input type="radio" name="question1" value="b"> b) Sujeto + verbo "to have" (have/has) + verbo en gerundio</label>
+          <label><input type="radio" name="question1" value="c"> c) Sujeto + verbo en infinitivo</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 2: Auxiliar Do/Does -->
+      <div class="question">
+        <h3>2. ¿Cuál es el auxiliar correcto para la frase "She ____ not like coffee"?</h3>
+        <div class="options">
+          <label><input type="radio" name="question2" value="a"> a) Do</label>
+          <label><input type="radio" name="question2" value="b"> b) Does</label>
+          <label><input type="radio" name="question2" value="c"> c) Is</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 3: Presente Continuo -->
+      <div class="question">
+        <h3>3. ¿Qué oración es un ejemplo de presente continuo?</h3>
+        <div class="options">
+          <label><input type="radio" name="question3" value="a"> a) I eat pizza every day.</label>
+          <label><input type="radio" name="question3" value="b"> b) I am eating pizza right now.</label>
+          <label><input type="radio" name="question3" value="c"> c) She plays the piano well.</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 4: Auxiliar Do/Does -->
+      <div class="question">
+        <h3>4. ¿Cómo se forma una pregunta en el presente con el auxiliar "do"?</h3>
+        <div class="options">
+          <label><input type="radio" name="question4" value="a"> a) Do you speaks English?</label>
+          <label><input type="radio" name="question4" value="b"> b) Do you speak English?</label>
+          <label><input type="radio" name="question4" value="c"> c) Does you speak English?</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 5: Presente Continuo -->
+      <div class="question">
+        <h3>5. ¿Cuál es la forma negativa del verbo "to be" en presente continuo?</h3>
+        <div class="options">
+          <label><input type="radio" name="question5" value="a"> a) am not</label>
+          <label><input type="radio" name="question5" value="b"> b) amn't</label>
+          <label><input type="radio" name="question5" value="c"> c) isn't am</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 6: Auxiliar Do/Does -->
+      <div class="question">
+        <h3>6. Elige la opción correcta: "She ____ playing tennis at the moment."</h3>
+        <div class="options">
+          <label><input type="radio" name="question6" value="a"> a) is</label>
+          <label><input type="radio" name="question6" value="b"> b) are</label>
+          <label><input type="radio" name="question6" value="c"> c) am</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 7: Auxiliar Do/Does -->
+      <div class="question">
+        <h3>7. Elige la forma correcta: "They ____ like to play football."</h3>
+        <div class="options">
+          <label><input type="radio" name="question7" value="a"> a) do</label>
+          <label><input type="radio" name="question7" value="b"> b) does</label>
+          <label><input type="radio" name="question7" value="c"> c) is</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 8: Auxiliar Do/Does -->
+      <div class="question">
+        <h3>8. ¿Cómo se utiliza el auxiliar "do" para preguntas en presente simple?</h3>
+        <div class="options">
+          <label><input type="radio" name="question8" value="a"> a) Do you eats pizza?</label>
+          <label><input type="radio" name="question8" value="b"> b) Do you eat pizza?</label>
+          <label><input type="radio" name="question8" value="c"> c) Does you eat pizza?</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 9: Presente Continuo -->
+      <div class="question">
+        <h3>9. Elige la opción correcta: "I ____ working right now."</h3>
+        <div class="options">
+          <label><input type="radio" name="question9" value="a"> a) am</label>
+          <label><input type="radio" name="question9" value="b"> b) is</label>
+          <label><input type="radio" name="question9" value="c"> c) are</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 10: Presente Continuo -->
+      <div class="question">
+        <h3>10. ¿Qué significa la frase "They are playing soccer"? </h3>
+        <div class="options">
+          <label><input type="radio" name="question10" value="a"> a) Ellos juegan al fútbol</label>
+          <label><input type="radio" name="question10" value="b"> b) Ellos están jugando al fútbol</label>
+          <label><input type="radio" name="question10" value="c"> c) Ellos jugaron al fútbol</label>
+        </div>
+      </div>
+
+      <!-- Botones de enviar, reiniciar y regresar -->
+      <div class="buttons">
+        <button type="button" onclick="submitQuiz()">Enviar</button>
+        <button type="button" onclick="resetQuiz()">Reiniciar</button>
+        <button class="back-button" onclick="window.history.back();">
+          <a href="ejemplo14.html">Regresar</a>
+        </button>
+      </div>
+    </form>
+
+    <!-- Resultados -->
+    <div class="result" id="result"></div>
+  </section>
+
+  <script>
+    function submitQuiz() {
+      const answers = {
+        question1: "a",
+        question2: "b",
+        question3: "b",
+        question4: "b",
+        question5: "a",
+        question6: "a",
+        question7: "a",
+        question8: "b",
+        question9: "a",
+        question10: "b"
+      };
+
+      let score = 0;
+      const form = document.getElementById("quizForm");
+      const formData = new FormData(form);
+
+      // Comprobar respuestas
+      formData.forEach((value, key) => {
+        if (value === answers[key]) {
+          score++;
+        }
+      });
+
+      // Mostrar el puntaje
+      const result = document.getElementById("result");
+      result.innerHTML = `Puntaje: ${score} / 10`;
+
+      // Deshabilitar el formulario después de enviar
+      form.querySelectorAll("input").forEach(input => input.disabled = true);
+    }
+
+    function resetQuiz() {
+      const form = document.getElementById("quizForm");
+      form.reset(); // Restablece el formulario
+
+      // Habilitar los inputs nuevamente para que el usuario pueda hacer el quiz otra vez
+      form.querySelectorAll("input").forEach(input => input.disabled = false);
+
+      // Limpiar el resultado
+      const result = document.getElementById("result");
+      result.innerHTML = '';
+    }
+  </script>
+
+</body>
+</html>
+

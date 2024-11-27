@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Juego - Arrastra y Suelta</title>
+    <link rel="icon" href="logoemp.jfif" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos Generales */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #528fe0;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    /* Contenedor principal */
+    .game-container {
+      background-color: #202124;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .instructions {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sentence {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+
+    .sentence span {
+      margin: 0 10px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .drag-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      gap: 20px;
+    }
+
+    .drag-item {
+      width: 150px;
+      padding: 10px;
+      background-color: #528fe0;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      cursor: grab;
+      transition: background-color 0.3s;
+    }
+
+    .drag-item:hover {
+      background-color: #416ac2;
+    }
+
+    .drop-target {
+      width: 150px;
+      height: 40px;
+      background-color: #ddd;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 5px;
+      margin: 0 20px;
+      border: 2px dashed #528fe0;
+    }
+
+    .back-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #528fe0;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: block;
+      margin: 30px auto;
+    }
+
+    .back-button:hover {
+      background-color: #416ac2;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 24px;
+      color: #528fe0;
+    }
+
+    .result p {
+      font-size: 20px;
+      color: #ff4d4d;
+    }
+
+    .restart-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #ff4d4d;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: block;
+      margin: 20px auto;
+      visibility: hidden; /* Ocultamos el botón al principio */
+    }
+
+    .restart-button:hover {
+      background-color: #ff2d2d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mini Juego - Arrastra y Suelta</h1>
+    <h2>Coloca las palabras en su lugar correcto.</h2>
+  </header>
+
+  <section class="game-container">
+    <div class="instructions">
+      <p>Arrastra las palabras a los espacios en blanco para completar las frases correctamente.</p>
+    </div>
+
+    <!-- Ejercicios -->
+    <div class="sentence">
+      <span>He</span>
+      <span class="drop-target" id="drop1"></span>
+      <span>watching TV right now.</span>
+    </div>
+
+    <div class="sentence">
+      <span class="drop-target" id="drop2"></span>
+      <span>you like English?</span>
+    </div>
+
+    <div class="sentence">
+      <span>I</span>
+      <span class="drop-target" id="drop3"></span>
+      <span>eating breakfast.</span>
+    </div>
+
+    <div class="sentence">
+      <span>She</span>
+      <span class="drop-target" id="drop4"></span>
+      <span>reading a book.</span>
+    </div>
+
+    <div class="sentence">
+      <span>You</span>
+      <span class="drop-target" id="drop5"></span>
+      <span>study every day?</span>
+    </div>
+
+    <div class="sentence">
+      <span>They</span>
+      <span class="drop-target" id="drop6"></span>
+      <span>play football on weekends.</span>
+    </div>
+
+    <div class="sentence">
+      <span>It</span>
+      <span class="drop-target" id="drop7"></span>
+      <span>raining right now.</span>
+    </div>
+
+    <div class="sentence">
+      <span>We</span>
+      <span class="drop-target" id="drop8"></span>
+      <span>live in a big city.</span>
+    </div>
+
+    <div class="drag-container">
+      <div class="drag-item" id="item1" draggable="true">am</div>
+      <div class="drag-item" id="item2" draggable="true">does</div>
+      <div class="drag-item" id="item3" draggable="true">are</div>
+      <div class="drag-item" id="item4" draggable="true">do</div>
+      <div class="drag-item" id="item5" draggable="true">is</div>
+      <div class="drag-item" id="item6" draggable="true">are</div>
+      <div class="drag-item" id="item7" draggable="true">is</div>
+      <div class="drag-item" id="item8" draggable="true">do</div>
+    </div>
+
+    <button class="back-button" onclick="window.history.back();"><a href="ejemplo.html">Regresar</a></button>
+
+    <div class="result" id="result">
+      <!-- Resultado se muestra aquí -->
+    </div>
+
+    <!-- Botón para reiniciar juego -->
+    <button class="restart-button" id="restartButton" onclick="restartGame()">Reiniciar Juego</button>
+  </section>
+
+  <script>
+    // Funciones para manejo del juego de arrastrar y soltar
+    const dragItems = document.querySelectorAll('.drag-item');
+    const dropTargets = document.querySelectorAll('.drop-target');
+    let score = 0;
+    let answers = [];
+
+    // Hacer que los elementos sean arrastrables
+    dragItems.forEach(item => {
+      item.addEventListener('dragstart', dragStart);
+    });
+
+    // Cuando el elemento es arrastrado
+    function dragStart(e) {
+      e.dataTransfer.setData('text', e.target.id);
+    }
+
+    // Permitir que los elementos se suelten en las zonas de destino
+    dropTargets.forEach(target => {
+      target.addEventListener('dragover', dragOver);
+      target.addEventListener('drop', drop);
+    });
+
+    // Permitir el "drop"
+    function dragOver(e) {
+      e.preventDefault();
+    }
+
+    function drop(e) {
+      e.preventDefault();
+      const draggedElementId = e.dataTransfer.getData('text');
+      const draggedElement = document.getElementById(draggedElementId);
+      const target = e.target;
+
+      // Verifica si el ítem arrastrado es correcto
+      if (target.id === 'drop1' && draggedElementId === 'item3') {
+        target.textContent = 'am';
+        answers[0] = true;
+      } else if (target.id === 'drop2' && draggedElementId === 'item8') {
+        target.textContent = 'do';
+        answers[1] = true;
+      } else if (target.id === 'drop3' && draggedElementId === 'item1') {
+        target.textContent = 'am';
+        answers[2] = true;
+      } else if (target.id === 'drop4' && draggedElementId === 'item5') {
+        target.textContent = 'is';
+        answers[3] = true;
+      } else if (target.id === 'drop5' && draggedElementId === 'item4') {
+        target.textContent = 'do';
+        answers[4] = true;
+      } else if (target.id === 'drop6' && draggedElementId === 'item6') {
+        target.textContent = 'are';
+        answers[5] = true;
+      } else if (target.id === 'drop7' && draggedElementId === 'item5') {
+        target.textContent = 'is';
+        answers[6] = true;
+      } else if (target.id === 'drop8' && draggedElementId === 'item7') {
+        target.textContent = 'is';
+        answers[7] = true;
+      }
+
+      draggedElement.setAttribute('draggable', 'false');
+      draggedElement.style.opacity = '0.5';
+
+      // Evaluar al final
+      checkResults();
+    }
+
+    // Evaluar los resultados y calificar
+    function checkResults() {
+      score = (answers.filter(answer => answer === true).length / 8) * 100;
+      document.getElementById('result').innerHTML = `
+        <p>Puntaje: ${score}%</p>
+        ${score === 100 ? '<p>¡Felicidades, completaste el juego correctamente!</p>' : '<p>Revisa tus respuestas.</p>'}
+      `;
+
+      // Si el puntaje no es 100, mostramos el botón de reinicio
+      if (score !== 100) {
+        document.getElementById('restartButton').style.visibility = 'visible';
+      }
+    }
+
+    // Función para reiniciar el juego
+    function restartGame() {
+      // Restablecer respuestas y áreas de texto
+      answers = [];
+      dropTargets.forEach(target => {
+        target.textContent = '';
+      });
+      dragItems.forEach(item => {
+        item.setAttribute('draggable', 'true');
+        item.style.opacity = '1';
+      });
+      document.getElementById('result').innerHTML = '';
+      document.getElementById('restartButton').style.visibility = 'hidden';
+    }
+  </script>
+
+</body>
+</html>
+

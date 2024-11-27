@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen - Cronómetro y Calificación</title>
+  <link rel="icon" href="logoemp.jfif" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #528fe0;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    /* Contenedor principal */
+    .exam-container {
+      background-color: #202124;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Cronómetro */
+    .timer {
+      font-size: 32px;
+      color: #ff4d4d;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Preguntas */
+    .question-container {
+      margin-bottom: 20px;
+    }
+
+    .question-container h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .answer-container {
+      margin-bottom: 10px;
+    }
+
+    .answer-container input {
+      margin-right: 10px;
+    }
+
+    /* Botones */
+    .submit-button, .restart-button, .back-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #528fe0;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .submit-button:hover, .restart-button:hover, .back-button:hover {
+      background-color: #416ac2;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 24px;
+      color: #528fe0;
+    }
+
+    .result p {
+      font-size: 20px;
+      color: #ff4d4d;
+    }
+
+    .restart-button {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Examen - Cronómetro</h1>
+    <h2>Responde las preguntas antes de que se acabe el tiempo.</h2>
+  </header>
+
+  <section class="exam-container">
+    <!-- Cronómetro -->
+    <div class="timer" id="timer">05:00</div>
+
+    <!-- Preguntas del examen -->
+    <form id="examForm">
+      <div class="question-container">
+        <h3>1. ¿Cuál es la forma correcta del verbo en presente continuo para: "She _______ (read) a book?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q1" value="am"> She am reading a book<br>
+          <input type="radio" name="q1" value="is"> She is reading a book<br>
+          <input type="radio" name="q1" value="are"> She are reading a book<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>2. ¿Cuál es el auxiliar correcto para formar el presente continuo con "I _______ (eat) pizza?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q2" value="am"> I am eating pizza<br>
+          <input type="radio" name="q2" value="is"> I is eating pizza<br>
+          <input type="radio" name="q2" value="are"> I are eating pizza<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>3. ¿Cuál es la forma correcta de: "They _______ (play) soccer."?</h3>
+        <div class="answer-container">
+          <input type="radio" name="q3" value="is"> They is playing soccer<br>
+          <input type="radio" name="q3" value="am"> They am playing soccer<br>
+          <input type="radio" name="q3" value="are"> They are playing soccer<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>4. ¿Cuál es la forma correcta para: "He _______ (study) now?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q4" value="am"> He am studying<br>
+          <input type="radio" name="q4" value="is"> He is studying<br>
+          <input type="radio" name="q4" value="are"> He are studying<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>5. ¿Cómo se forma el presente continuo en la siguiente frase: "You _______ (talk) on the phone?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q5" value="am"> You am talking on the phone<br>
+          <input type="radio" name="q5" value="is"> You is talking on the phone<br>
+          <input type="radio" name="q5" value="are"> You are talking on the phone<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>6. ¿Cuál es la forma correcta de: "I _______ (work) on a project at the moment?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q6" value="am"> I am working on a project<br>
+          <input type="radio" name="q6" value="is"> I is working on a project<br>
+          <input type="radio" name="q6" value="are"> I are working on a project<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>7. ¿Cuál es la forma correcta de: "We _______ (watch) TV right now?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q7" value="am"> We am watching TV<br>
+          <input type="radio" name="q7" value="is"> We is watching TV<br>
+          <input type="radio" name="q7" value="are"> We are watching TV<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>8. ¿Cómo se forma el presente continuo de la siguiente frase: "They _______ (have) dinner now?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q8" value="am"> They am having dinner<br>
+          <input type="radio" name="q8" value="is"> They is having dinner<br>
+          <input type="radio" name="q8" value="are"> They are having dinner<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>9. ¿Cómo se forma el presente continuo para: "We _______ (do) our homework?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q9" value="am"> We am doing our homework<br>
+          <input type="radio" name="q9" value="is"> We is doing our homework<br>
+          <input type="radio" name="q9" value="are"> We are doing our homework<br>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <h3>10. ¿Cuál es la forma correcta de: "She _______ (speak) on the phone right now?"</h3>
+        <div class="answer-container">
+          <input type="radio" name="q10" value="am"> She am speaking<br>
+          <input type="radio" name="q10" value="is"> She is speaking<br>
+          <input type="radio" name="q10" value="are"> She are speaking<br>
+        </div>
+      </div>
+
+      <!-- Botón para enviar respuestas -->
+      <button type="button" class="submit-button" onclick="submitExam()">Enviar Respuestas</button>
+    </form>
+
+    <!-- Botón de Reinicio -->
+    <button class="restart-button" id="restartButton" onclick="restartExam()">Reiniciar Examen</button>
+    
+    <!-- Botón de Regreso -->
+    <button class="back-button" onclick="goBack()"><a href="ejemplo14.html">Regresar</a></button>
+
+    <!-- Resultados -->
+    <div class="result" id="result"></div>
+  </section>
+
+  <script>
+    // Variables de tiempo
+    let timer;
+    let timeLeft = 300; // 5 minutos en segundos
+    let interval;
+
+    // Cronómetro
+    function startTimer() {
+      interval = setInterval(() => {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        document.getElementById('timer').textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        timeLeft--;
+
+        if (timeLeft < 0) {
+          clearInterval(interval);
+          submitExam();
+        }
+      }, 1000);
+    }
+
+    // Enviar examen
+    function submitExam() {
+      clearInterval(interval);  // Detener el cronómetro cuando se envían las respuestas.
+      const form = document.getElementById('examForm');
+      const formData = new FormData(form);
+      let correctAnswers = 0;
+
+      // Correct answers
+      const correct = {
+        q1: 'is',
+        q2: 'am',
+        q3: 'are',
+        q4: 'is',
+        q5: 'are',
+        q6: 'am',
+        q7: 'are',
+        q8: 'are',
+        q9: 'are',
+        q10: 'is'
+      };
+
+      // Comprobar respuestas
+      formData.forEach((value, key) => {
+        if (value === correct[key]) {
+          correctAnswers++;
+        }
+      });
+
+      // Mostrar resultado
+      const percentage = (correctAnswers / 10) * 100;
+      document.getElementById('result').innerHTML = `
+        <p>Puntaje: ${correctAnswers}/10</p>
+        <p>Calificación: ${percentage}%</p>
+      `;
+      
+      // Mostrar botón de reinicio si el puntaje es menor a 100
+      if (percentage !== 100) {
+        document.getElementById('restartButton').style.display = 'block';
+      }
+    }
+
+    // Reiniciar examen
+    function restartExam() {
+      location.reload();
+    }
+
+    // Regresar a la página anterior
+    function goBack() {
+      window.history.back();
+    }
+
+    // Iniciar el cronómetro al cargar la página
+    window.onload = startTimer;
+  </script>
+
+</body>
+</html>
